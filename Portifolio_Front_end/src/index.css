@@ -1,49 +1,56 @@
+/* Reset e configuração global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Fonte moderna e clean */
 }
 
 body {
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #0D0D0D; /* Fundo preto absoluto */
+  color: #E0E0E0; /* Texto cinza claro */
   line-height: 1.6;
 }
 
+/* Container principal */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Header - Menu de Navegação */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  background: #fff;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px 0;
+  background: rgba(13, 13, 13, 0.95); /* Fundo escuro com leve transparência */
+  border-bottom: 2px solid #00FFFF;
 }
 
 .header h1 {
   font-size: 2rem;
-  color: #000000;
+  color: #00FFFF; /* Ciano neon */
   margin-left: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .navbar a {
   text-decoration: none;
-  color: #333;
+  color: #E0E0E0;
   padding: 10px 15px;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 .navbar a:hover {
-  color: #007bff;
+  color: #00FFFF;
+  text-shadow: 0px 0px 10px #00FFFF;
 }
 
+/* Hero Section */
 .hero {
   display: flex;
   justify-content: center;
@@ -54,29 +61,35 @@ body {
 
 .hero h2 {
   font-size: 3rem;
-  color: #222;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .hero p {
   font-size: 1.2rem;
-  color: #555;
+  color: #E0E0E0;
   margin-top: 10px;
 }
 
 .btn {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 12px 25px;
+  background-color: #00FFFF; /* Ciano neon */
+  color: #0D0D0D;
   text-decoration: none;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  font-weight: bold;
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: #00e5e5;
+  box-shadow: 0px 0px 15px #00FFFF;
+  transform: translateY(-3px);
 }
 
+/* Projetos */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -85,34 +98,41 @@ body {
 }
 
 .project-card {
-  background: #fff;
+  background: #1F1F1F; /* Cinza carvão */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.4);
 }
 
+.project-card h3 {
+  color: #00FFFF;
+}
+
+/* Rodapé */
 .footer {
   text-align: center;
   padding: 20px 0;
-  background: #222;
-  color: #fff;
-  margin-top: 40px;
+  background: #0D0D0D;
+  color: #E0E0E0;
+  border-top: 2px solid #00FFFF;
 }
 
+/* Tecnologias */
 .technologies {
   text-align: center;
   padding: 50px 0;
-  background: #fff;
+  background: #0D0D0D;
 }
 
 .technologies h2 {
   font-size: 2.5rem;
-  color: #007bff;
+  color: #00FFFF;
 }
 
 .technologies ul {
@@ -125,36 +145,39 @@ body {
 }
 
 .technologies li {
-  background: #007bff;
-  color: #fff;
+  background: #00FFFF;
+  color: #0D0D0D;
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 1.2rem;
+  font-weight: bold;
 }
 
+/* Contato */
 .contact {
   text-align: center;
   padding: 50px 0;
-  background: #f8f9fa;
+  background: #1F1F1F;
 }
 
 .contact h2 {
   font-size: 2.5rem;
-  color: #222;
+  color: #00FFFF;
 }
 
 .contact p {
   font-size: 1.2rem;
-  color: #555;
+  color: #E0E0E0;
   margin-top: 10px;
 }
 
 .contact a {
-  color: #007bff;
+  color: #00FFFF;
   text-decoration: none;
   font-weight: bold;
+  transition: text-shadow 0.3s;
 }
 
 .contact a:hover {
-  text-decoration: underline;
+  text-shadow: 0px 0px 10px #00FFFF;
 }
