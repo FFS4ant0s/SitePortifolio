@@ -1,11 +1,35 @@
 <section id="projects" class="projects container">
-    {% for project in projects %}
-        <div class="project-card">
-            <h3>{{ project.name }}</h3>
-            <p>{{ project.description }}</p>
-            {% if project.image %}
-                <img src="{{ project.image.url }}" alt="{{ project.name }}">
-            {% endif %}
-        </div>
-    {% endfor %}
+    <div id="projects-container"></div> <!-- Onde os projetos serão renderizados -->
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('http://127.0.0.1:8000/api/projects/')
+            .then(response => response.json())
+            .then(data => {
+                const projectsContainer = document.getElementById('projects-container');
+                data.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.classList.add('project-card');
+                    
+                    const projectName = document.createElement('h3');
+                    projectName.textContent = project.name;
+                    projectCard.appendChild(projectName);
+                    
+                    const projectDescription = document.createElement('p');
+                    projectDescription.textContent = project.description;
+                    projectCard.appendChild(projectDescription);
+                    
+                    if (project.image) {
+                        const projectImage = document.createElement('img');
+                        projectImage.src = project.image;  // URL da imagem
+                        projectImage.alt = project.name;
+                        projectCard.appendChild(projectImage);
+                    }
+                    
+                    projectsContainer.appendChild(projectCard);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os projetos:', error));
+    });
+</script>
