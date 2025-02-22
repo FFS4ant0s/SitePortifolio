@@ -1,0 +1,11 @@
+<section id="projects" class="projects container">
+    {% for project in projects %}
+        <div class="project-card">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+            {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.name }}">
+            {% endif %}
+        </div>
+    {% endfor %}
+</section>
