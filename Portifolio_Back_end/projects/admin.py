@@ -4,13 +4,14 @@ from .models import Project
 
 class ProjectAdmin(admin.ModelAdmin):
     # Campos que serão exibidos na listagem
-    list_display = ('name', 'description', 'created_at', 'updated_at')
+    list_display = ('title', 'description', 'technologies',
+                    'created_at', 'updated_at')
 
     # Campos que serão usados para busca
-    search_fields = ('name', 'description')
+    search_fields = ('title', 'description', 'technologies')
 
     # Campos que serão exibidos ao editar/visualizar
-    fields = ('name', 'description', 'whatsapp_link', 'image')
+    fields = ('title', 'description', 'technologies', 'url', 'image')
 
     # Filtro lateral para facilitar a administração
     list_filter = ('created_at', 'updated_at')

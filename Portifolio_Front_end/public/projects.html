@@ -12,18 +12,20 @@
                     const projectCard = document.createElement('div');
                     projectCard.classList.add('project-card');
                     
+                    // Usando 'title' ao invés de 'name'
                     const projectName = document.createElement('h3');
-                    projectName.textContent = project.name;
+                    projectName.textContent = project.title;  // Alterado para 'title'
                     projectCard.appendChild(projectName);
                     
                     const projectDescription = document.createElement('p');
                     projectDescription.textContent = project.description;
                     projectCard.appendChild(projectDescription);
                     
+                    // Ajuste na URL da imagem
                     if (project.image) {
                         const projectImage = document.createElement('img');
-                        projectImage.src = project.image;  // URL da imagem
-                        projectImage.alt = project.name;
+                        projectImage.src = project.image;  // A URL da imagem já vem do Django
+                        projectImage.alt = project.title;  // Alterado para 'title'
                         projectCard.appendChild(projectImage);
                     }
                     

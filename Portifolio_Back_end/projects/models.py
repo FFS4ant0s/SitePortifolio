@@ -8,5 +8,9 @@ class Project(models.Model):
     url = models.URLField()
     image = models.ImageField(upload_to='projects/', null=True, blank=True)
 
+    # Campos de data
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return self.title
