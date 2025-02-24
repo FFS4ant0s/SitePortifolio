@@ -1,51 +1,34 @@
-// app.js
+import React, { useState, useEffect } from 'react';
+import './App.css'; // Se você tiver um arquivo de estilos para o React
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Função para carregar projetos da API
-  const loadProjects = async () => {
-      try {
-          const response = await fetch('http://127.0.0.1:8000/api/projects/');
-          const projects = await response.json();
-          displayProjects(projects);
-      } catch (error) {
-          console.error('Erro ao carregar os projetos:', error);
-      }
-  };
+function App() {
+  const [projects, setProjects] = useState([]);
 
-  // Função para exibir os projetos no HTML
-  const displayProjects = (projects) => {
-      const projectsContainer = document.getElementById('projects');
-      projectsContainer.innerHTML = ''; // Limpa o conteúdo atual
+  // Função para buscar os projetos da API
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/projects/')
+      .then(response => response.json())
+      .then(data => setProjects(data))
+      .catch(error => console.error('Erro ao buscar projetos:', error));
+  }, []);
 
-      // Itera sobre os projetos e cria os elementos para cada um
-      projects.forEach((project) => {
-          const projectCard = document.createElement('div');
-          projectCard.classList.add('project-card');
+  return (
+    <div>
+      <section id="projects" className="projects container">
+        {projects.length > 0 ? (
+          projects.map((project) => (
+            <div className="project-card" key={project.id}>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <a href={project.url} target="_blank" rel="noopener noreferrer">Ver Projeto</a>
+            </div>
+          ))
+        ) : (
+          <p>Carregando projetos...</p>
+        )}
+      </section>
+    </div>
+  );
+}
 
-          const projectTitle = document.createElement('h3');
-          projectTitle.textContent = project.title;
-
-          const projectDescription = document.createElement('p');
-          projectDescription.textContent = project.description;
-
-          const projectTechnologies = document.createElement('p');
-          projectTechnologies.textContent = `Tecnologias: ${project.technologies}`;
-
-          const projectLink = document.createElement('a');
-          projectLink.href = project.url;
-          projectLink.textContent = 'Ver mais';
-
-          // Adiciona os elementos à div da card do projeto
-          projectCard.appendChild(projectTitle);
-          projectCard.appendChild(projectDescription);
-          projectCard.appendChild(projectTechnologies);
-          projectCard.appendChild(projectLink);
-
-          // Adiciona a card do projeto ao container de projetos
-          projectsContainer.appendChild(projectCard);
-      });
-  };
-
-  // Carregar projetos ao carregar a página
-  loadProjects();
-});
+export default App;
