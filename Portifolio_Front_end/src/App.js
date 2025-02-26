@@ -3,6 +3,8 @@ import Projects from './components/Projects';  // Importe o componente Projects
 import './styles/styles.css';  // Importe o CSS, caso necessário
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
+import Technologies from './components/Technologies';
 
 const App = () => {
   return (
@@ -22,23 +24,11 @@ const App = () => {
       {/* Aqui você chama o componente Projects */}
       <Projects />
 
-      {/* Outras seções do seu portfólio */}
-      <section id="technologies" className="technologies container">
-        <h2>Tecnologias</h2>
-        <ul>
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>Node.js</li>
-        </ul>
-      </section>
+      <Technologies />
 
       <Contact />
 
-      <footer className="footer">
-        <p>&copy; 2025 Fernando Fernandes. Todos os direitos reservados.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
