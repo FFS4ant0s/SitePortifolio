@@ -1,32 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import './App.css'; // Se você tiver um arquivo de estilos para o React
+import React from 'react';
+import Projects from './components/Projects';  // Importe o componente Projects
+import './styles/styles.css';  // Importe o CSS, caso necessário
 
-function App() {
-  const [projects, setProjects] = useState([]);
-
-  // Função para buscar os projetos da API
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/projects/')
-      .then(response => response.json())
-      .then(data => setProjects(data))
-      .catch(error => console.error('Erro ao buscar projetos:', error));
-  }, []);
-
+const App = () => {
   return (
     <div>
-      <section id="projects" className="projects container">
-        {projects.length > 0 ? (
-          projects.map((project) => (
-            <div className="project-card" key={project.id}>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <a href={project.url} target="_blank" rel="noopener noreferrer">Ver Projeto</a>
-            </div>
-          ))
-        ) : (
-          <p>Carregando projetos...</p>
-        )}
+      <header className="header">
+        <h1>Meu portfólio</h1>
+        <nav className="navbar">
+          <a href="#about">Sobre</a>
+          <a href="#projects">Projetos</a>
+          <a href="#technologies">Tecnologias</a>
+          <a href="#contact">Contato</a>
+        </nav>
+      </header>
+
+      {/* Aqui você chama o componente Projects */}
+      <Projects />
+
+      {/* Outras seções do seu portfólio */}
+      <section id="technologies" className="technologies container">
+        <h2>Tecnologias</h2>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+        </ul>
       </section>
+
+      <footer className="footer">
+        <p>&copy; 2025 Fernando Fernandes. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 }
