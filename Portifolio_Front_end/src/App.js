@@ -2,6 +2,7 @@ import React from 'react';
 import Projects from './components/Projects';  // Importe o componente Projects
 import './styles/styles.css';  // Importe o CSS, caso necessário
 import About from './components/About';
+import Contact from './components/Contact';
 
 const App = () => {
   return (
@@ -32,6 +33,8 @@ const App = () => {
           <li>Node.js</li>
         </ul>
       </section>
+
+      <Contact />
 
       <footer className="footer">
         <p>&copy; 2025 Fernando Fernandes. Todos os direitos reservados.</p>
