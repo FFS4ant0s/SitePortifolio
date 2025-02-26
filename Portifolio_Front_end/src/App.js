@@ -1,6 +1,7 @@
 import React from 'react';
 import Projects from './components/Projects';  // Importe o componente Projects
 import './styles/styles.css';  // Importe o CSS, caso necessário
+import About from './components/About';
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
           <a href="#contact">Contato</a>
         </nav>
       </header>
+
+      <About />
 
       {/* Aqui você chama o componente Projects */}
       <Projects />
