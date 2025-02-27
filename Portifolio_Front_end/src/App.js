@@ -21,7 +21,6 @@ const App = () => {
 
       <About />
 
-      {/* Aqui você chama o componente Projects */}
       <Projects />
 
       <Technologies />

@@ -1,86 +1,89 @@
 /* Reset e configuração global */
+/* Reset e configuração global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif; /* Fonte moderna e clean */
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background-color: #0D0D0D; /* Fundo preto absoluto */
-  color: #E0E0E0; /* Texto cinza claro */
+  background-color: #0D0D0D;
+  color: #E0E0E0;
   line-height: 1.6;
+  font-size: 1rem;
+  padding-top: 80px; /* Ajuste para evitar sobreposição do header fixo */
 }
 
-/* Container principal */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Header - Menu de Navegação */
+/* Header fixo */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  background: rgba(13, 13, 13, 0.95); /* Fundo escuro com leve transparência */
+  padding: 20px 50px;
+  background: #1F1F1F; /* Novo gradiente */
   border-bottom: 2px solid #00FFFF;
+  z-index: 1000;
 }
 
 .header h1 {
-  font-size: 2rem;
-  color: #00FFFF; /* Ciano neon */
-  margin-left: 50px;
+  font-size: 2.8rem;
+  color: #00FFFF;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .navbar a {
   text-decoration: none;
-  color: #E0E0E0;
-  padding: 10px 15px;
-  font-weight: 500;
-  transition: color 0.3s, text-shadow 0.3s;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
 }
 
 .navbar a:hover {
   color: #00FFFF;
   text-shadow: 0px 0px 10px #00FFFF;
+  transform: scale(1.05);
 }
 
-/* Seção Hero - Sobre Mim */
+/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap; /* Permite adaptação para telas menores */
-  height: auto;
-  padding: 50px 20px;
-  text-align: left;
-  gap: 50px; /* Espaçamento entre a imagem e o texto */
+  flex-wrap: wrap;
+  padding: 100px 20px;
+  text-align: center;
+  gap: 50px;
+  background: linear-gradient(45deg, #111, #222);
 }
 
-/* Estilização da imagem de perfil */
 .profile-photo {
-  width: 200px; /* Ajuste conforme necessário */
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   border: 3px solid #00FFFF;
-  object-fit: cover; /* Garante que a imagem preencha corretamente o círculo */
-  background-color: #0D0D0D; /* Cor de fundo preta */
+  object-fit: cover;
   box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
 }
 
-/* Conteúdo textual ao lado da foto */
 .hero-content {
   max-width: 600px;
 }
 
-/* Estilos do título e parágrafo */
 .hero h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #00FFFF;
   text-transform: uppercase;
 }
@@ -91,7 +94,6 @@ body {
   margin-top: 10px;
 }
 
-/* Botão principal */
 .btn {
   display: inline-block;
   padding: 12px 25px;
@@ -109,37 +111,51 @@ body {
   box-shadow: 0px 0px 15px #00FFFF;
   transform: translateY(-3px);
 }
-
-/* Projetos */
+/* Projects Section */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 50px 0;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid fluida */
+  gap: 30px;
+  padding: 50px 20px;
+}
+
+.projects h2 {
+  font-size: 2.8rem;
+  color: #00FFFF;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .project-card {
-  background: #1F1F1F; /* Cinza carvão */
+  background: #1F1F1F;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.2);
+  border-radius: 15px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  gap: 20px;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.4);
+  box-shadow: 0px 10px 40px rgba(0, 255, 255, 0.4);
 }
 
 .project-card h3 {
   color: #00FFFF;
 }
 
-/* Tecnologias */
+.project-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Technologies Section */
 .technologies {
   text-align: center;
-  padding: 50px 0;
-  background: #0D0D0D;
+  padding: 50px 20px;
+  background: #111;
 }
 
 .technologies h2 {
@@ -151,7 +167,7 @@ body {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
   padding: 20px;
 }
@@ -161,37 +177,54 @@ body {
   align-items: center;
   background: #1F1F1F;
   color: #E0E0E0;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 1.2rem;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.4rem;
   font-weight: bold;
-  gap: 10px; /* Espaço entre a logo e o nome da tecnologia */
+  gap: 15px;
+  max-width: 250px; /* Limita o tamanho do card */
+  flex: 1 1 auto;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.technologies .tech-logo {
-  width: 30px; /* Ajuste o tamanho das logos conforme necessário */
-  height: 30px;
+.technologies li:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.4);
 }
 
-.technologies img {
-  width: 60px; /* Ajuste o tamanho conforme necessário */
-  height: 60px; /* Tamanho fixo para as imagens */
-  border-radius: 50%; /* Torna a imagem circular */
-  object-fit: cover; /* Garante que a imagem ocupe todo o espaço do círculo */
-  background-color: #0D0D0D; /* Cor de fundo preta */
-  box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5); /* Adiciona uma sombra ciano */
-  margin-right: 10px; /* Adiciona espaçamento entre a imagem e o texto */
+.technologies li img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
-/* Contato */
+@media (max-width: 768px) {
+  .technologies ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .technologies li {
+    max-width: 100%;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .technologies li img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Contact Section */
 .contact {
   text-align: center;
-  padding: 50px 0;
+  padding: 50px 20px;
   background: #1F1F1F;
 }
 
 .contact h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #00FFFF;
 }
 
@@ -212,16 +245,15 @@ body {
   text-shadow: 0px 0px 10px #00FFFF;
 }
 
-/* Rodapé */
+/* Footer */
 .footer {
   text-align: center;
-  padding: 20px 0;
+  padding: 20px;
   background: #0D0D0D;
   color: #E0E0E0;
   border-top: 2px solid #00FFFF;
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -236,5 +268,14 @@ body {
 
   .hero-content {
     max-width: 100%;
+  }
+
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .technologies ul {
+    flex-direction: column;
+    gap: 20px;
   }
 }
