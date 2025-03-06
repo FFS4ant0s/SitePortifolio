@@ -32,7 +32,11 @@ const Projects = () => {
         {projects.map(project => (
           <div key={project.id} className="project-card">
             <div className="project-image">
-              <img src={project.image_url} alt={project.title} />
+              {/* Aqui você pode usar a URL diretamente, já que está retornando a URL completa */}
+              <img
+                src={project.image}
+                alt={project.title}
+              />
             </div>
             <div className="project-details">
               <h3>{project.title}</h3>
