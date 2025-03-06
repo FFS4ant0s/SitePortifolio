@@ -1,7 +1,7 @@
 import React from 'react';
 import FotoJava from '../assets/Javaimage.png';
 import FotoPython from '../assets/imagespython.png';
-import FotoJavaScript from '../assets/javascriptimage.png';
+import FotoJavaScript from '../assets/React.png';
 
 function Technologies() {
   return (
