@@ -1,20 +1,20 @@
 services:
   backend:
     build:
-      context: ./backend
+      context: ./Portifolio_Back_end
       dockerfile: Dockerfile.backend
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - ./Portifolio_Back_end:/app
 
   frontend:
     build:
-      context: ./frontend
+      context: ./Portifolio_Front_end
       dockerfile: Dockerfile.frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./frontend:/app
+      - ./Portifolio_Front_end:/app
     depends_on:
       - backend  # O frontend só sobe depois do backend
