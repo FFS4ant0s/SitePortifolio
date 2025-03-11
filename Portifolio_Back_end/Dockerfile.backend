@@ -4,14 +4,15 @@ FROM python:3.11
 # Definir diretório de trabalho
 WORKDIR /app
 
-# Copiar os arquivos do projeto para o container
+# Copiar arquivos do projeto
 COPY . .
 
-# Instalar dependências do Django
-RUN pip install --no-cache-dir -r requirements.txt
+# Criar e ativar ambiente virtual
+RUN python -m venv venv
+RUN /bin/bash -c "source venv/bin/activate && pip install --no-cache-dir -r requirements.txt"
 
-# Expor a porta do Django
+# Expor porta do Django
 EXPOSE 8000
 
-# Comando para iniciar o backend
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Comando para iniciar o backend com ambiente virtual ativado
+CMD ["/bin/bash", "-c", "source venv/bin/activate && python manage.py runserver 0.0.0.0:8000"]
