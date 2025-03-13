@@ -1,20 +1,17 @@
-# Usar a imagem do Node.js
+# Usar imagem do Node.js
 FROM node:18-alpine
 
 # Definir diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos do projeto
+# Copiar arquivos para dentro do contêiner
 COPY . .
 
 # Instalar dependências
 RUN npm install
 
-# Construir o projeto
-RUN npm run build
+# Expor porta do React
+EXPOSE 3000
 
-# Expor porta do Vite
-EXPOSE 5173
-
-# Comando para iniciar o frontend
-CMD ["npm", "run", "dev", "--", "--host"]
+# Iniciar o servidor do React
+CMD ["npm", "start"]

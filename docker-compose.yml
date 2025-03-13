@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   backend:
     build:
@@ -7,14 +9,22 @@ services:
       - "8000:8000"
     volumes:
       - ./Portifolio_Back_end:/app
+    environment:
+      - DEBUG=True
+    # Remover o comando para usar o que está no Dockerfile
+    # command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
   frontend:
     build:
       context: ./Portifolio_Front_end
       dockerfile: Dockerfile.frontend
     ports:
-      - "5173:5173"
+      - "3000:3000" # Agora o React roda na porta 3000
     volumes:
       - ./Portifolio_Front_end:/app
+      - /app/node_modules
     depends_on:
-      - backend  # O frontend só sobe depois do backend
+      - backend # O frontend só sobe depois do backend
+    environment:
+      - WDS_SOCKET_PORT=0 # Corrige erro de WebSocket no React
+    command: ["npm", "start"]
