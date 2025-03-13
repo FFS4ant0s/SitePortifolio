@@ -9,10 +9,10 @@ COPY . .
 
 # Criar e ativar ambiente virtual
 RUN python -m venv venv
-RUN /bin/bash -c "source venv/bin/activate && pip install --no-cache-dir -r requirements.txt"
+RUN venv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Expor porta do Django
 EXPOSE 8000
 
 # Comando para iniciar o backend com ambiente virtual ativado
-CMD ["/bin/bash", "-c", "source venv/bin/activate && python manage.py runserver 0.0.0.0:8000"]
+CMD ["venv/bin/python", "manage.py", "runserver", "0.0.0.0:8000"]
