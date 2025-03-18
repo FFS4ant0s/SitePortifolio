@@ -1,0 +1,7 @@
+cd /mnt/c/Users/FERNANDO/Downloads/Meu_Portifolio
+
+Iniciar o Docker: sudo service docker start
+
+Build se necessario: docker-compose -f docker-compose.dev.yml build
+
+Iniciar Server: docker-compose -f docker-compose.yml up
