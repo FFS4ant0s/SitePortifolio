@@ -10,6 +10,9 @@ COPY . .
 # Instalar dependências
 RUN npm install
 
+# Adicionar permissão de execução para os binários do node_modules
+RUN chmod +x /app/node_modules/.bin/*
+
 # Expor porta do React
 EXPOSE 3000
 
