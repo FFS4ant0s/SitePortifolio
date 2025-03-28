@@ -1,30 +1,58 @@
 version: "3.8"
 
 services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+
   backend:
     build:
       context: ./Portifolio_Back_end
       dockerfile: Dockerfile.backend
-    ports:
-      - "8000:8000"
+    container_name: django_backend
+    restart: always
+    depends_on:
+      - db
     volumes:
       - ./Portifolio_Back_end:/app
+    ports:
+      - "8000:8000"
     environment:
-      - DEBUG=True
-    # Remover o comando para usar o que está no Dockerfile
-    # command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+      - DB_NAME=mydatabase
+      - DB_USER=myuser
+      - DB_PASSWORD=mypassword
+      - DB_HOST=db
+      - DB_PORT=5432
+    command: >
+      sh -c "chmod +x wait_for_db.sh &&
+             ./wait_for_db.sh &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
 
   frontend:
     build:
       context: ./Portifolio_Front_end
       dockerfile: Dockerfile.frontend
-    ports:
-      - "3000:3000" # Agora o React roda na porta 3000
+    container_name: react_frontend
+    restart: always
+    depends_on:
+      - backend
     volumes:
       - ./Portifolio_Front_end:/app
-      - /app/node_modules
-    depends_on:
-      - backend # O frontend só sobe depois do backend
+    ports:
+      - "3000:3000"
     environment:
-      - WDS_SOCKET_PORT=0 # Corrige erro de WebSocket no React
+      - WDS_SOCKET_PORT=0
     command: ["npm", "start"]
+
+volumes:
+  postgres_data:

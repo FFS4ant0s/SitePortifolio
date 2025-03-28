@@ -1,19 +1,22 @@
-# Usar imagem do Node.js
+# Usar a imagem oficial do Node.js com Alpine
 FROM node:18-alpine
 
 # Definir diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos para dentro do contêiner
-COPY . .
+# Copiar package.json e package-lock.json (se existir) para instalar as dependências
+COPY package*.json ./
 
 # Instalar dependências
 RUN npm install
 
+# Copiar o restante dos arquivos para o contêiner
+COPY . .
+
 # Adicionar permissão de execução para os binários do node_modules
 RUN chmod +x /app/node_modules/.bin/*
 
-# Expor porta do React
+# Expor a porta que o React irá usar
 EXPOSE 3000
 
 # Iniciar o servidor do React
