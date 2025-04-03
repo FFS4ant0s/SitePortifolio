@@ -5,3 +5,6 @@ Iniciar o Docker: sudo service docker start
 Build se necessario: docker-compose -f docker-compose.yml build
 
 Iniciar Server: docker-compose -f docker-compose.yml up
+
+
+pip install -r Portifolio_Back_end/requirements.txt e gunicorn portfolio.wsgi
