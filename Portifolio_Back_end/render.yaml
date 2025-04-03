@@ -5,7 +5,7 @@ services:
     plan: free
     rootDir: Portifolio_Back_end  # ✅ Ajustado para apontar para o diretório do backend
     buildCommand: |
-      pip install --no-cache-dir -r requirements.txt  # ✅ Agora o caminho está correto
+      pip install --no-cache-dir -r Portifolio_Back_end/requirements.txt
     startCommand: gunicorn Portifolio_Back_end.wsgi:application --bind 0.0.0.0:8000
     envVars:
       - key: DATABASE_URL
