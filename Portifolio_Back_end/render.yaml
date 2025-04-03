@@ -3,12 +3,13 @@ services:
     name: meu-portifolio-backend
     env: python
     plan: free
-    rootDir: Portifolio_Back_end  # Mantém o backend como diretório raiz
+    rootDir: Portifolio_Back_end  # Define o backend como diretório raiz
     buildCommand:  |
-        ls -l  # Adiciona um comando para listar os arquivos (debug)
+        cd Portifolio_Back_end  # Entra na pasta correta
+        ls -l  # Lista os arquivos (para depuração)
         chmod +x ./wait_for_db.sh
-        pip install --no-cache-dir -r requirements.txt  # Sem "./" para garantir que Render veja o arquivo
-    startCommand: bash -c "./wait_for_db.sh && python manage.py migrate && gunicorn Portifolio_Back_end.wsgi:application --bind 0.0.0.0:8000"
+        pip install --no-cache-dir -r requirements.txt  # Agora o caminho está certo
+    startCommand: bash -c "cd Portifolio_Back_end && ./wait_for_db.sh && python manage.py migrate && gunicorn Portifolio_Back_end.wsgi:application --bind 0.0.0.0:8000"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
