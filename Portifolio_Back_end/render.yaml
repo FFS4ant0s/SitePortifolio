@@ -1,12 +1,12 @@
 services:
   - type: web
     name: meu-portifolio-backend
-    env: python
+    runtime: python  # ✅ Define o ambiente corretamente
     plan: free
-    rootDir: Portifolio_Back_end
-    buildCommand:  |
-        pip install --no-cache-dir -r requirements.txt
-    startCommand: bash -c "cd Portifolio_Back_end && ./wait_for_db.sh && python manage.py migrate && gunicorn Portifolio_Back_end.wsgi:application --bind 0.0.0.0:8000"
+    rootDir: Portifolio_Back_end  # ✅ Ajustado para apontar para o diretório do backend
+    buildCommand: |
+      pip install --no-cache-dir -r requirements.txt  # ✅ Agora o caminho está correto
+    startCommand: gunicorn Portifolio_Back_end.wsgi:application --bind 0.0.0.0:8000
     envVars:
       - key: DATABASE_URL
         fromDatabase:
