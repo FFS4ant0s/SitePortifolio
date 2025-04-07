@@ -3,9 +3,8 @@ services:
     name: meu-portifolio-backend
     runtime: python
     plan: free
-    rootDir: Portifolio_Back_end
-    buildCommand: pip install --no-cache-dir -r requirements.txt
-    startCommand: gunicorn portfolio.wsgi:application --bind 0.0.0.0:8000
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn portfolio.wsgi:application
     envVars:
       - key: DATABASE_URL
         fromDatabase:
