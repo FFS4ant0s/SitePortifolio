@@ -5,6 +5,7 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn portfolio.wsgi:application
+    rootDir: Portifolio_Back_end
     envVars:
       - key: DATABASE_URL
         fromDatabase:
