@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import githubImg from '../assets/Github.png';
+import ecommerceImg from '../assets/E-commerce.png';
+import cardapioImg from '../assets/Cardapio.png';
+import blogImg from '../assets/Blog.png';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const imageMap = {
+    GitHub: githubImg,
+    "E-commerce": ecommerceImg,
+    "Cardápio Digital": cardapioImg,
+    Blog: blogImg
+  };
 
   useEffect(() => {
     fetch('https://siteportifolio-kn9k.onrender.com/api/projects/')
@@ -34,7 +44,7 @@ const Projects = () => {
             <div className="project-image">
               {/* Aqui você pode usar a URL diretamente, já que está retornando a URL completa */}
               <img
-                src={project.image}
+                src={imageMap[project.title]}
                 alt={project.title}
               />
             </div>
