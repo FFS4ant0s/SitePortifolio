@@ -1,6 +1,7 @@
 # Usa a imagem base do Python
 FROM python:3.11
 
+
 # Instala o netcat-openbsd
 RUN apt-get update && apt-get install -y netcat-openbsd
 
