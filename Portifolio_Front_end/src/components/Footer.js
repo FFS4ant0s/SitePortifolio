@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2025 Fernando Fernandes. Todos os direitos reservados.</p>
+      <p>&copy; 2025 Fernandes Tech Company. Todos os direitos reservados.</p>
     </footer>
   );
 }

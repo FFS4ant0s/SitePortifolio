@@ -6,7 +6,7 @@ import FotoJavaScript from '../assets/React.png';
 function Technologies() {
   return (
     <section id="technologies" className="technologies">
-      <h2>Tecnologias</h2>
+      <h2>Nossas Principais Tecnologias</h2>
       <ul>
         <li>
           <img src={FotoJava} alt="Minha Foto" className="profile-photo" />
